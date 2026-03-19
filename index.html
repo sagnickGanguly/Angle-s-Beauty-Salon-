@@ -1,325 +1,578 @@
+```html
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Angel's Beauty Academy & Studio | Patna</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+    <title>Angel's Beauty Salon & Academy | Premium Beauty Services</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
-        
-        :root {
-            --gold: #C5A059;
-            --teal: #0D3B36;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        body { font-family: 'Montserrat', sans-serif; background-color: #FDFBF7; overflow-x: hidden; }
-        h1, h2, h3, h4, .nav-brand { font-family: 'Cinzel', serif; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
 
-        .gold-gradient {
-            background: linear-gradient(135deg, #C5A059 0%, #F1D592 50%, #C5A059 100%);
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .bg-teal-luxury { background-color: var(--teal); }
-        .text-teal-luxury { color: var(--teal); }
-        .border-gold { border-color: var(--gold); }
-        .text-gold { color: var(--gold); }
-        .bg-gold { background-color: var(--gold); }
-
-        /* Premium Smooth Image Hovers */
-        .image-card { position: relative; overflow: hidden; }
-        .image-card img { transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-        .image-card:hover img { transform: scale(1.08); }
-        .image-card .overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(13, 59, 54, 0.95) 0%, rgba(13, 59, 54, 0.1) 100%);
-            opacity: 0; transition: opacity 0.6s ease;
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
         }
-        .image-card:hover .overlay { opacity: 1; }
 
-        /* Text Reveal Animations */
-        .text-reveal { overflow: hidden; display: inline-block; }
-        .text-reveal span {
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: #ff6b9d;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ff9a9e"/><stop offset="50%" stop-color="%23fecfef"/><stop offset="100%" stop-color="%23fecfef"/></radialGradient></defs><rect width="1200" height="800" fill="url(%23a)"/><path d="M0 400Q300 200 600 400T1200 400" stroke="%23fff" stroke-width="2" fill="none" opacity="0.3"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .cta-buttons {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .btn {
             display: inline-block;
-            transform: translateY(100%);
-            animation: revealUp 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+            padding: 15px 40px;
+            margin: 0 10px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
         }
-        @keyframes revealUp { 100% { transform: translateY(0); } }
 
-        /* Glass Navbar */
-        .nav-scrolled {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: white;
         }
 
-        .modal-fade { transition: opacity 0.4s ease-in-out; }
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 500px;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+        }
+
+        .about-image:hover::before {
+            animation: shine 1s ease-in-out;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ff6b9d;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .service-card:nth-child(2) { animation-delay: 0.2s; }
+        .service-card:nth-child(3) { animation-delay: 0.4s; }
+        .service-card:nth-child(4) { animation-delay: 0.6s; }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(255,107,157,0.3);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #ff6b9d;
+            margin-bottom: 1rem;
+        }
+
+        /* Price Catalogue */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .price-card {
+            background: linear-gradient(135deg, #fff, #f8f9fa);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+        }
+
+        .price-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ff6b9d;
+            margin: 1rem 0;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,107,157,0.8);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Academy Section */
+        .academy {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            color: white;
+        }
+
+        .academy-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: #ff6b9d;
+            width: 50px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #f0f0f0;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6b9d;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            animation: bounce 2s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 2px 2px 10px #999;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ff6b9d;
+        }
     </style>
 </head>
-<body class="relative">
-
-    <nav id="navbar" class="fixed w-full flex items-center justify-between px-6 md:px-12 py-5 transition-all duration-500 z-40 text-white mix-blend-difference hover:mix-blend-normal hover:bg-white hover:text-teal-900 nav-scrolled-behavior">
-        <div class="text-2xl font-bold tracking-tighter nav-brand">ANGEL'S <span class="text-gold">BEAUTY</span></div>
-        <div class="hidden md:flex space-x-10 font-medium text-xs tracking-[0.2em] uppercase">
-            <a href="#home" class="hover:text-gold transition duration-300">Home</a>
-            <a href="#about" class="hover:text-gold transition duration-300">About</a>
-            <a href="#salon" class="hover:text-gold transition duration-300">Salon</a>
-            <a href="#academy" class="hover:text-gold transition duration-300">Academy</a>
-            <a href="#gallery" class="hover:text-gold transition duration-300">Gallery</a>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Angel's Beauty</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#prices" class="nav-link">Prices</a></li>
+                <li><a href="#academy" class="nav-link">Academy</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
         </div>
-        <button onclick="openModal()" class="border border-gold px-6 py-2 text-xs tracking-widest hover:bg-gold hover:text-white transition duration-300">BOOK NOW</button>
     </nav>
 
-    <header id="home" class="relative h-screen flex items-center justify-center text-center overflow-hidden bg-teal-luxury">
-        <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1920&q=80" alt="Hero Background" class="w-full h-full object-cover opacity-40 transform scale-105 animate-[pulse_20s_ease-in-out_infinite]">
-        </div>
-        <div class="relative z-10 max-w-5xl mx-auto px-4 text-white">
-            <h4 class="text-gold tracking-[0.4em] uppercase mb-6 text-xs md:text-sm text-reveal"><span style="animation-delay: 0.2s;">Welcome to Perfection in Patna</span></h4>
-            <h1 class="text-5xl md:text-8xl mb-8 leading-tight font-light text-reveal">
-                <span style="animation-delay: 0.4s;">Art of <i class="gold-gradient font-bold">Aesthetics</i></span>
-            </h1>
-            <p class="text-stone-300 mb-10 font-light tracking-wide max-w-xl mx-auto text-sm md:text-base text-reveal"><span style="animation-delay: 0.6s;">Experience luxury salon services and master professional cosmetology.</span></p>
-            <div data-aos="fade-up" data-aos-delay="1000">
-                <a href="https://wa.me/919341298996?text=Hello!%20I%20would%20like%20to%20book%20a%20service." target="_blank" class="bg-white text-teal-900 px-10 py-4 font-bold tracking-widest hover:bg-gold hover:text-white transition duration-500 shadow-2xl text-xs md:text-sm">WHATSAPP US</a>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Angel's Beauty Salon</h1>
+            <p>Where Beauty Meets Perfection | Premium Services & Academy</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Book Appointment</a>
+                <a href="https://wa.me/919341298996" target="_blank" class="btn btn-secondary">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
             </div>
-        </div>
-    </header>
-
-    <section id="about" class="py-24 px-6 md:px-12 bg-white flex items-center justify-center">
-        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="1000">
-            <h4 class="text-gold tracking-[0.2em] uppercase mb-4 text-xs font-bold">Our Studio in Patna</h4>
-            <h2 class="text-3xl md:text-5xl text-teal-900 mb-8 leading-snug font-light">Elevating elegance through <br>expert artistry.</h2>
-            <p class="text-stone-500 font-light leading-relaxed mb-8 max-w-2xl mx-auto text-sm md:text-base">Angel's Beauty Academy & Studio is Patna's premier destination for high-end makeovers and professional cosmetology training. We blend creativity with technique to bring your vision to life.</p>
         </div>
     </section>
 
-    <section id="salon" class="py-20 bg-stone-50">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 mb-12" data-aos="fade-right">
-            <h2 class="text-4xl text-teal-900">Signature Services</h2>
-            <div class="w-16 h-[2px] bg-gold mt-4"></div>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
-            <div class="image-card h-[500px] group" data-aos="fade-up" data-aos-delay="100">
-                <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=800&q=80" alt="Bridal Makeup" class="w-full h-full object-cover">
-                <div class="overlay flex flex-col justify-end p-10 text-white">
-                    <h3 class="text-3xl mb-2 font-light">Bridal Makeup</h3>
-                    <p class="text-sm font-light text-gold tracking-widest uppercase opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition duration-700">Flawless Artistry</p>
-                </div>
-            </div>
-            <div class="image-card h-[500px] group" data-aos="fade-up" data-aos-delay="200">
-                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=800&q=80" alt="Hair Styling" class="w-full h-full object-cover">
-                <div class="overlay flex flex-col justify-end p-10 text-white">
-                    <h3 class="text-3xl mb-2 font-light">Hair Styling</h3>
-                    <p class="text-sm font-light text-gold tracking-widest uppercase opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition duration-700">Expert Cuts & Color</p>
-                </div>
-            </div>
-            <div class="image-card h-[500px] group" data-aos="fade-up" data-aos-delay="300">
-                <img src="https://images.unsplash.com/photo-1519014816548-bf5fe459e366?auto=format&fit=crop&w=800&q=80" alt="Nail Art" class="w-full h-full object-cover">
-                <div class="overlay flex flex-col justify-end p-10 text-white">
-                    <h3 class="text-3xl mb-2 font-light">Nail Studio</h3>
-                    <p class="text-sm font-light text-gold tracking-widest uppercase opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition duration-700">Extensions & Art</p>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Angel's Beauty</h2>
+            <div class="about-grid">
+                <div class="about-image"></div>
+                <div class="about-content">
+                    <h3>Experience Luxury Beauty</h3>
+                    <p>Angel's Beauty Salon & Academy is your destination for premium beauty services and professional training. With years of expertise and passion for beauty, we transform dreams into reality.</p>
+                    <p>Our salon combines cutting-edge techniques with personalized care to bring out your natural beauty. Join our academy to master the art of beauty.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="academy" class="py-24 px-6 md:px-12 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h4 class="text-gold tracking-[0.2em] uppercase mb-4 text-xs font-bold">Certification Programs</h4>
-                <h2 class="text-4xl md:text-5xl text-teal-900 mb-8">The Academy</h2>
-                <div class="mt-8 p-8 bg-teal-luxury text-white inline-block shadow-2xl border-l-4 border-gold group hover:bg-teal-900 transition duration-500">
-                    <span class="block text-xs uppercase tracking-[0.2em] opacity-80 mb-2">Master Package</span>
-                    <h3 class="text-3xl md:text-4xl font-bold mb-2">Complete Cosmetology</h3>
-                    <span class="text-3xl italic gold-gradient">Only ₹45,000</span>
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>Hair Styling</h3>
+                    <p>Professional haircuts, coloring, and styling services using premium products.</p>
                 </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <div class="bg-stone-50 p-10 text-center hover:shadow-2xl hover:-translate-y-2 transition duration-500 border border-transparent hover:border-gold/30" data-aos="zoom-in" data-aos-delay="100">
-                    <i class="fa-solid fa-scissors text-gold text-4xl mb-6"></i>
-                    <h3 class="font-bold text-teal-900 mb-8 text-xl tracking-widest">HAIRSTYLE</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <p class="text-xs text-stone-400 uppercase tracking-widest mb-1">Basic to Advance</p>
-                            <p class="text-2xl font-light text-teal-800">₹6,000</p>
-                        </div>
-                        <div class="w-12 h-[1px] bg-stone-200 mx-auto my-4"></div>
-                        <div>
-                            <p class="text-xs text-stone-400 uppercase tracking-widest mb-1">Basic Only</p>
-                            <p class="text-lg font-light text-stone-600">₹4,000</p>
-                        </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
                     </div>
+                    <h3>Bridal Makeup</h3>
+                    <p>Stunning bridal makeup that lasts all day, customized to your vision.</p>
                 </div>
-
-                <div class="bg-stone-50 p-10 text-center hover:shadow-2xl hover:-translate-y-2 transition duration-500 border border-transparent hover:border-gold/30" data-aos="zoom-in" data-aos-delay="200">
-                    <i class="fa-solid fa-hand-sparkles text-gold text-4xl mb-6"></i>
-                    <h3 class="font-bold text-teal-900 mb-8 text-xl tracking-widest">NAILS</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <p class="text-xs text-stone-400 uppercase tracking-widest mb-1">Basic to Advance</p>
-                            <p class="text-2xl font-light text-teal-800">₹12,000</p>
-                        </div>
-                        <div class="w-12 h-[1px] bg-stone-200 mx-auto my-4"></div>
-                        <div>
-                            <p class="text-xs text-stone-400 uppercase tracking-widest mb-1">Basic Only</p>
-                            <p class="text-lg font-light text-stone-600">₹8,000</p>
-                        </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-spa"></i>
                     </div>
+                    <h3>Skin Care</h3>
+                    <p>Advanced facials, peels, and skin treatments for radiant skin.</p>
                 </div>
-
-                <div class="bg-stone-50 p-10 text-center hover:shadow-2xl hover:-translate-y-2 transition duration-500 border border-transparent hover:border-gold/30" data-aos="zoom-in" data-aos-delay="300">
-                    <i class="fa-solid fa-brush text-gold text-4xl mb-6"></i>
-                    <h3 class="font-bold text-teal-900 mb-8 text-xl tracking-widest">MAKEUP</h3>
-                    <div class="space-y-4">
-                        <div>
-                            <p class="text-xs text-stone-400 uppercase tracking-widest mb-1">Basic to Advance</p>
-                            <p class="text-2xl font-light text-teal-800">₹22,000</p>
-                        </div>
-                        <div class="w-12 h-[1px] bg-stone-200 mx-auto my-4"></div>
-                        <div>
-                            <p class="text-xs text-stone-400 uppercase tracking-widest mb-1">Basic Only</p>
-                            <p class="text-lg font-light text-stone-600">₹15,000</p>
-                        </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-nail-polish"></i>
                     </div>
+                    <h3>Nail Art</h3>
+                    <p>Trendy nail designs and manicure services with long-lasting results.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="gallery" class="py-2 bg-stone-50">
-        <div class="max-w-7xl mx-auto px-6 md:px-12 py-16 text-center" data-aos="fade-up">
-            <h2 class="text-4xl text-teal-900 mb-4">Our Work</h2>
-            <p class="text-stone-500 font-light text-sm">Follow us on Instagram <a href="https://instagram.com/_anglesbeautyacademyandstudio" class="text-gold font-medium">@_anglesbeautyacademyandstudio</a></p>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-1">
-            <div class="image-card h-64" data-aos="fade-in"><img src="https://images.unsplash.com/photo-1512496015851-a1dc8a478985?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Portfolio 1"></div>
-            <div class="image-card h-64" data-aos="fade-in" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1595476108010-b4d1f10d5e43?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Portfolio 2"></div>
-            <div class="image-card h-64" data-aos="fade-in" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1521590832167-7bfcfaa6362f?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Portfolio 3"></div>
-            <div class="image-card h-64" data-aos="fade-in" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1494597564530-871f2b93ac55?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Portfolio 4"></div>
-            <div class="image-card h-64" data-aos="fade-in"><img src="https://images.unsplash.com/photo-1620052328734-716264d1f211?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Portfolio 5"></div>
-            <div class="image-card h-64" data-aos="fade-in" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Portfolio 6"></div>
-            <div class="image-card h-64" data-aos="fade-in" data-aos-delay="200"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Portfolio 7"></div>
-            <div class="image-card h-64" data-aos="fade-in" data-aos-delay="300"><img src="https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover" alt="Portfolio 8"></div>
-        </div>
-    </section>
-
-    <a href="https://wa.me/919341298996?text=Hello!%20I%20am%20interested%20in%20your%20services." target="_blank" class="fixed bottom-8 right-8 bg-[#25D366] text-white p-4 rounded-full shadow-[0_10px_30px_rgba(37,211,102,0.4)] hover:scale-110 transition duration-300 z-40 flex items-center justify-center h-16 w-16">
-        <i class="fa-brands fa-whatsapp text-3xl"></i>
-    </a>
-
-    <div id="bookingModal" class="fixed inset-0 bg-teal-900/90 z-50 hidden flex items-center justify-center modal-fade backdrop-blur-md px-4">
-        <div class="bg-white w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 rounded-none overflow-hidden shadow-2xl relative">
-            
-            <button onclick="closeModal()" class="absolute top-4 right-6 text-stone-400 hover:text-teal-900 transition text-2xl z-10">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <div class="bg-teal-luxury text-white p-12 flex flex-col justify-center relative overflow-hidden">
-                <h2 class="text-4xl mb-8 font-light text-gold z-10">Get in Touch</h2>
-                
-                <div class="space-y-8 z-10">
-                    <div class="flex items-center space-x-6">
-                        <i class="fa-solid fa-phone text-gold text-2xl w-6"></i>
-                        <div>
-                            <p class="text-[10px] text-stone-400 uppercase tracking-[0.2em] mb-1">Call / WhatsApp</p>
-                            <a href="https://wa.me/919341298996" class="font-light text-xl hover:text-gold transition">9341298996</a>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-center space-x-6">
-                        <i class="fa-solid fa-envelope text-gold text-2xl w-6"></i>
-                        <div>
-                            <p class="text-[10px] text-stone-400 uppercase tracking-[0.2em] mb-1">Email</p>
-                            <a href="mailto:angel8000008@gmail.com" class="font-light text-base hover:text-gold transition">angel8000008@gmail.com</a>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center space-x-6">
-                        <i class="fa-brands fa-instagram text-gold text-3xl w-6"></i>
-                        <div>
-                            <p class="text-[10px] text-stone-400 uppercase tracking-[0.2em] mb-1">Instagram</p>
-                            <a href="https://instagram.com/_anglesbeautyacademyandstudio" target="_blank" class="font-light text-sm hover:text-gold transition">@_anglesbeautyacademyandstudio</a>
-                        </div>
-                    </div>
-
-                    <div class="flex items-center space-x-6">
-                        <i class="fa-solid fa-location-dot text-gold text-2xl w-6"></i>
-                        <div>
-                            <p class="text-[10px] text-stone-400 uppercase tracking-[0.2em] mb-1">Location</p>
-                            <p class="font-light text-base">Patna, Bihar</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="p-12 flex flex-col justify-center bg-white">
-                <h3 class="text-2xl text-teal-900 font-light mb-8">Send an Inquiry</h3>
-                <form class="space-y-8">
-                    <div>
-                        <input type="text" placeholder="Your Name" class="w-full border-b border-stone-200 py-2 text-teal-900 focus:outline-none focus:border-gold bg-transparent transition font-light text-sm">
-                    </div>
-                    <div>
-                        <input type="tel" placeholder="Phone Number" class="w-full border-b border-stone-200 py-2 text-teal-900 focus:outline-none focus:border-gold bg-transparent transition font-light text-sm">
-                    </div>
-                    <div>
-                        <select class="w-full border-b border-stone-200 py-2 text-stone-500 focus:outline-none focus:border-gold bg-transparent transition font-light text-sm cursor-pointer">
-                            <option value="" disabled selected>Select Service...</option>
-                            <option>Academy Enrollment</option>
-                            <option>Bridal Makeup</option>
-                            <option>Salon Services</option>
-                        </select>
-                    </div>
-                    <button type="button" onclick="closeModal()" class="w-full bg-teal-900 text-white py-4 text-xs font-medium tracking-[0.3em] hover:bg-gold transition mt-4">SUBMIT</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <footer class="py-12 bg-white text-center border-t border-stone-100">
-        <div class="text-teal-900 font-bold tracking-[0.3em] mb-3 nav-brand text-lg">ANGEL'S BEAUTY</div>
-        <p class="text-stone-400 text-[10px] mb-6 uppercase tracking-[0.2em]">Patna &copy; 2026 Crafted for Professional Excellence</p>
-        <div class="flex justify-center text-stone-300">
-            <a href="https://github.com/your-username" target="_blank" class="hover:text-gold transition text-xl">
-                <i class="fa-brands fa-github"></i>
-            </a>
-        </div>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Initialize Scroll Animations
-        AOS.init({
-            once: true,
-            offset: 50,
-            duration: 1000,
-            easing: 'ease-out-cubic',
-        });
-
-        // Modal Logic
-        const modal = document.getElementById('bookingModal');
-        function openModal() { modal.classList.remove('hidden'); }
-        function closeModal() { modal.classList.add('hidden'); }
-        modal.addEventListener('click', function(e) { if (e.target === this) { closeModal(); } });
-
-        // Glass Navbar Logic
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                navbar.classList.add('nav-scrolled', 'text-teal-900');
-                navbar.classList.remove('text-white', 'mix-blend-difference');
-            } else {
-                navbar.classList.remove('nav-scrolled', 'text-teal-900');
-                navbar.classList.add('text-white', 'mix-blend-difference');
-            }
-        });
-    </script>
-</body>
-</html>
